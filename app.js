@@ -8,11 +8,27 @@ var Diner = function(name, dish1, dish2) {
 
 Diner.prototype.total = function() {
   var total = 0;
-  for (each in mike.dishes) {
+  for (var each in mike.dishes) {
     total += mike.dishes[each];
   }
  return total;
 };
+
+Diner.prototype.tax = function() {
+  var total = this.total();
+  var tax = total * 0.08;
+  tax = tax.toFixed(2);
+  tax = Number(tax);
+  return tax;
+}
+
+Diner.prototype.tip = function() {
+  var total = this.total();
+  var tip = total * 0.18;
+  tip = tip.toFixed(2);
+  tip = Number(tip);
+  return tip;
+}
 
 var chicken = {
     name: 'chicken',
@@ -27,4 +43,7 @@ var cheeseburger = {
 
 var mike = new Diner('greg', chicken, cheeseburger);
 
-mike.total();
+console.log(mike.total());
+console.log(mike.tax());
+console.log(mike.tip());
+
