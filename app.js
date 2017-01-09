@@ -40,9 +40,17 @@ Bill.prototype.totalWithTax = function() {
   var sum = 0;
   for (var each in Object.keys(this)) {
     var key = Object.keys(this)[each];
-    console.log(this[key].tax());
     sum += this[key].total();
     sum += this[key].tax();
+  }
+  return sum;
+};
+
+Bill.prototype.combinedTipTotal = function() {
+  var sum = 0;
+  for (var each in Object.keys(this)) {
+    var key = Object.keys(this)[each];
+    sum += this[key].tip();
   }
   return sum;
 };
@@ -87,6 +95,7 @@ var jen = new Diner('Jen', steak, eggs);
 
 var bill = new Bill(mike, matt, jen);
 console.log(bill.totalWithTax());
+console.log(bill.combinedTipTotal());
 
 
 
