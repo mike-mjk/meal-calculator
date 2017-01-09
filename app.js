@@ -55,6 +55,20 @@ Bill.prototype.combinedTipTotal = function() {
   return sum;
 };
 
+Bill.prototype.breakdown = function() {
+  breakdown = "";
+  for (var each in Object.keys(this)) {
+    var key = Object.keys(this)[each];
+    breakdown += "Breakdown For " + this[key].name + ": ";
+    breakdown += "Total: " + this[key].total() + " ";
+    breakdown += "Tax: " + this[key].tax() + " ";
+    breakdown += "Tip: " + this[key].tip() + "\n";
+  }
+  return breakdown;
+};
+
+
+
 var chicken = {
     name: 'chicken',
     cost: 10.95
@@ -94,8 +108,9 @@ var jen = new Diner('Jen', steak, eggs);
 //console.log(matt);
 
 var bill = new Bill(mike, matt, jen);
-console.log(bill.totalWithTax());
-console.log(bill.combinedTipTotal());
+console.log("Total bill with tax: " + bill.totalWithTax());
+console.log("Total tip: " + bill.combinedTipTotal());
+console.log(bill.breakdown());
 
 
 
