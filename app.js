@@ -8,8 +8,8 @@ var Diner = function(name, dish1, dish2) {
 
 Diner.prototype.total = function() {
   var total = 0;
-  for (var each in mike.dishes) {
-    total += mike.dishes[each];
+  for (var each in this.dishes) {
+    total += this.dishes[each];
   }
  return total;
 };
@@ -20,7 +20,7 @@ Diner.prototype.tax = function() {
   tax = tax.toFixed(2);
   tax = Number(tax);
   return tax;
-}
+};
 
 Diner.prototype.tip = function() {
   var total = this.total();
@@ -28,7 +28,24 @@ Diner.prototype.tip = function() {
   tip = tip.toFixed(2);
   tip = Number(tip);
   return tip;
-}
+};
+
+var Bill = function() {
+  for (var i = 0; i < arguments.length; i++) {
+    this['diner' + i] = arguments[i];
+  }
+};
+
+Bill.prototype.totalWithTax = function() {
+  var sum = 0;
+  for (var each in Object.keys(this)) {
+    var key = Object.keys(this)[each];
+    console.log(this[key].tax());
+    sum += this[key].total();
+    sum += this[key].tax();
+  }
+  return sum;
+};
 
 var chicken = {
     name: 'chicken',
@@ -40,10 +57,37 @@ var cheeseburger = {
     cost: 11.95
 };
 
+var pancakes = {
+    name: 'pancakes',
+    cost: 6.50
+};
 
-var mike = new Diner('greg', chicken, cheeseburger);
+var eggs = {
+    name: 'eggs',
+    cost: 3.50
+};
 
-console.log(mike.total());
-console.log(mike.tax());
-console.log(mike.tip());
+var steak = {
+    name: 'steak',
+    cost: 17.00
+};
+
+var soup = {
+    name: 'soup',
+    cost: 5.50
+};
+
+
+
+var mike = new Diner('Mike', chicken, cheeseburger);
+var matt = new Diner('Matt', pancakes, soup);
+var jen = new Diner('Jen', steak, eggs);
+
+//console.log(matt);
+
+var bill = new Bill(mike, matt, jen);
+console.log(bill.totalWithTax());
+
+
+
 
