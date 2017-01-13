@@ -1,18 +1,64 @@
-var Diner = function(name, dish1, dish2) {
+// var Diner = function(name, dish1, dish2) {
+//     this.name = name;
+//     this.dishes = {};
+//     this.dishes[dish1.name] = dish1.cost;
+//     this.dishes[dish2.name] = dish2.cost;
+    
+// };
+
+// class Polygon {
+//   constructor(height, width) {
+//     this.height = height;
+//     this.width = width;
+//   }
+// }
+
+
+// class Polygon {
+//   constructor(height, width) {
+//     this.height = height;
+//     this.width = width;
+//   }
+  
+//   get area() {
+//     return this.calcArea();
+//   }
+
+//   calcArea() {
+//     return this.height * this.width;
+//   }
+// }
+
+// const square = new Polygon(10, 10);
+
+// console.log(square.area);
+
+
+class Diner {
+  constructor(name, dish1, dish2) {
     this.name = name;
     this.dishes = {};
     this.dishes[dish1.name] = dish1.cost;
     this.dishes[dish2.name] = dish2.cost;
-    
-};
-
-Diner.prototype.total = function() {
-  var total = 0;
-  for (var each in this.dishes) {
-    total += this.dishes[each];
   }
- return total;
-};
+  
+  total() {
+    var total = 0;
+    for (var each in this.dishes) {
+      //this is here
+      total += this.dishes[each];
+    }
+   return total;
+  }
+}
+
+// Diner.prototype.total = function() {
+//   var total = 0;
+//   for (var each in this.dishes) {
+//     total += this.dishes[each];
+//   }
+// return total;
+// };
 
 Diner.prototype.tax = function() {
   var total = this.total();
