@@ -56,7 +56,7 @@ Bill.prototype.combinedTipTotal = function() {
 };
 
 Bill.prototype.breakdown = function() {
-  breakdown = "";
+  var breakdown = "";
   for (var each in Object.keys(this)) {
     var key = Object.keys(this)[each];
     breakdown += "Breakdown For " + this[key].name + ": ";
